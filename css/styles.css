@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+.fullscreen-container {
+    
+    /* margin-top: -1.2rem; */
+    background-color: #353b48;
+    color: #f5f6fa;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.close {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    z-index: 4;
+}
+.close .feather-x {
+    width: 100%;
+    height: 100%;
+    color: #7f8fa6;
+}
+.close .feather-x:hover {
+    color: #f5f6fa;
+}
+.list-form-container {
+    min-height: 200px;
+    max-height: 78vh;
+    min-width: 400px;
+    max-width: 66vw;
+    width: 50%;
+    /* border: 1px solid blue; */
+    padding: 30px 50px;
+    display: flex;
+    flex-flow: column nowrap;
+    
+}
+.list-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 0 0 2rem 0;
+}
+.element-list, .element {
+    margin: 0;
+    padding: 0;
+}
+.element-list {
+    list-style: none;
+    overflow-y: scroll;
+    /* border: 1px solid #222; */
+    margin-bottom: 2.3rem;
+    height: 280px;
+}
+
+.element-list .element {
+    
+    font-size: 1.2rem;
+}
+.element-list li input[type="radio"] {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    position: absolute;
+
+}
+.element {
+    padding: 0 0 0 0.4rem;
+    /* colored border if selected */
+}
+.element label {
+
+    display: inline-block;
+    min-width: 94%;
+    padding: 0.8rem 0.2rem;
+}
+.element label:hover {
+    cursor: pointer;   
+}
+.element:hover {
+    cursor: pointer;
+    background: #2f3640;
+    font-weight: bold;
+    border-left: 6px solid #273c75;
+}
+.add-element {
+    min-width: 200px;
+    width: 100%;
+    font-size: 1.2rem;
+    background: none;
+    color: #f5f6fa;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #192a56;
+}
+.add-element:hover {
+    background-color: #273c75;
+    cursor: pointer;
+    font-weight: bolder;
+}
