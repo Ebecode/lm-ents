@@ -9,6 +9,8 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+/* fullscreen container styles */
 .fullscreen-container {
     
     /* margin-top: -1.2rem; */
@@ -35,7 +37,9 @@ html, body {
 .close .feather-x:hover {
     color: #f5f6fa;
 }
-.list-form-container {
+
+/* container styles */
+.form-container {
     min-height: 200px;
     max-height: 78vh;
     min-width: 400px;
@@ -47,11 +51,13 @@ html, body {
     flex-flow: column nowrap;
     
 }
-.list-title {
+.form-title {
     font-size: 1.8rem;
     text-align: center;
     margin: 0 0 2rem 0;
 }
+
+/* element list styles */
 .element-list, .element {
     margin: 0;
     padding: 0;
@@ -94,19 +100,59 @@ html, body {
     font-weight: bold;
     border-left: 6px solid #273c75;
 }
-.add-element {
+
+/* element edit styles */
+.input-group {
+    
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.6rem;
+}
+.input-group label {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+.input-group input {
+    background: none;
+    margin: 0;
+    padding: 0.6rem 0.8rem;
+    font-size: 1.2rem;
+    color: #f5f6fa;
+    border: 0;
+    outline: 0;
+    background-color: #2f3640;
+    border-radius: 5px;
+}
+.input-group input:focus {
+    border: 2px solid #40739e;
+    background-color: #273c75;
+}
+
+/* form submission styles */
+.form-submit {
     min-width: 200px;
     width: 100%;
     font-size: 1.2rem;
     background: none;
     color: #f5f6fa;
     padding: 0.8rem;
+    margin: 0 0.4rem;
     border: none;
     border-radius: 5px;
     background-color: #192a56;
 }
-.add-element:hover {
+.form-submit:hover {
     background-color: #273c75;
     cursor: pointer;
     font-weight: bolder;
+}
+
+.button-group {
+    display: flex;
+}
+.button-group .delete {
+    background-color: #c23616;
+}
+.delete:hover {
+    background-color: #e84118;
 }
