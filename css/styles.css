@@ -31,6 +31,7 @@ html, body {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    transition: all 0.3s ease-out;
 }
 .panel-icon-right {
     right: 40px;
@@ -99,12 +100,14 @@ html, body {
 .element {
     padding: 0 0 0 0.4rem;
     /* colored border if selected */
+    transition: all 0.3s ease-out;
 }
 .element label {
 
     display: inline-block;
     min-width: 94%;
     padding: 0.8rem 0.2rem;
+    transition: all 0.3s ease-out;
 }
 .element label:hover {
     cursor: pointer;   
@@ -137,6 +140,7 @@ html, body {
     outline: 0;
     background-color: #2f3640;
     border-radius: 5px;
+    transition: all 0.3s ease-out;
 }
 .input-group input:hover {
     border: 2px solid #40739e;
@@ -159,6 +163,7 @@ html, body {
     border: none;
     border-radius: 5px;
     background-color: #192a56;
+    transition: all 0.3s ease-out;
 }
 .form-submit:hover {
     background-color: #273c75;
@@ -171,6 +176,7 @@ html, body {
 }
 .button-group .delete {
     background-color: #c23616;
+    transition: all 0.3s ease-out;
 }
 .delete:hover {
     background-color: #e84118;
@@ -201,6 +207,7 @@ html, body {
     text-align: center;
     background-color: #353b48;
     color: #f5f5f5;
+    transition: all 0.3s ease-out;
 }
 .input-heading:hover {
     background-color: #192a56;
@@ -221,6 +228,7 @@ html, body {
     justify-content: center;
     align-items: center;
     top: 40%;
+    transition: all 0.3s ease-out;
 }
 .swipe-left {
     left: -15%;
@@ -232,6 +240,7 @@ html, body {
     height: 70%;
     width: 70%;
     color: #7f8fa6;
+    transition: all 0.3s ease-out;
 }
 .swipe-icon:hover, .swipe-icon .feather:hover {
     background-color: #2f3640;
