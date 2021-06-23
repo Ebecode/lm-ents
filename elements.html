@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementos</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="js/elements.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="fullscreen-container list-screen">
+        <div class="panel-icon panel-icon-right hide-list icon-hide">
+            <i data-feather="x"></i>
+        </div>
+        <div class="list-container form-container">
+            <h3 class="form-title">Elementos</h3>
+            <form action="#" method="post">
+                <ul class="element-list">
+                    <li class="element">
+                        <input type="radio" name="element" id="hydrogen" value="hydrogen">
+                        <label for="hydrogen">Hydrogen</label>
+                    </li>
+                    <li class="element">
+                        <input type="radio" name="element" id="helium" value="helium">
+                        <label for="helium">helium</label>
+                    </li>
+                    <li class="element">
+                        <input type="radio" name="element" id="lithium" value="lithium">
+                        <label for="lithium">lithium</label>
+                    </li>
+                    <li class="element">
+                        <input type="radio" name="element" id="berilium" value="berilium">
+                        <label for="berilium">berilium</label>
+                    </li>
+                    <li class="element">
+                        <input type="radio" name="element" id="boron" value="boron">
+                        <label for="boron">boron</label>
+                    </li>
+                    <li class="element">
+                        <input type="radio" name="element" id="carbon" value="carbon">
+                        <label for="carbon">carbon</label>
+                    </li>
+                    <li class="element">
+                        <input type="radio" name="element" id="nitrogen" value="nitrogen">
+                        <label for="nitrogen">nitrogen</label>
+                    </li>
+                    <li class="element">
+                        <input type="radio" name="element" id="oxygen" value="oxygen">
+                        <label for="oxygen">oxygen</label>
+                    </li>
+                </ul>
+
+                <button type="submit" class=" form-submit add-element">Agregar elemento</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="fullscreen-container showcase-screen">
+        <div class="panel-icon panel-icon-left show-list">
+            <i data-feather="menu"></i>
+        </div>
+        <div class="panel-icon panel-icon-right show-edit">
+            <i data-feather="edit"></i>
+        </div>
+        <div class="showcase-container">
+            <div class="heading-form">
+
+                <form action="#" class="heading-search">
+                    <input type="text" name="" id="" value="Neon" class="input-heading">
+                </form>
+            </div>
+            <div class="element-display">
+                <div class="swipe-icon swipe-left">
+                    <i data-feather="chevrons-left"></i>
+                </div>
+                
+                <div class="element-block">
+                    <!-- <div class="elem-number"><p class="atom-weight">10</p></div> -->
+                    <p class="elem-number">10</p>
+                    <p class="elem-symbol">Ne</p>
+                    <p class="elem-weight">20.180</p>
+                    <p class="elem-name">Neon</p>
+                </div>
+
+                <div class="swipe-icon swipe-right">
+                    <i data-feather="chevrons-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="fullscreen-container edit-screen">
+        <div class="panel-icon panel-icon-left hide-edit icon-hide">
+            <i data-feather="arrow-left"></i>
+        </div>
+        <div class="edit-container form-container">
+            <h3 class="form-title">Editar</h3>
+            <form action="#" method="post">
+                <div class="input-group">
+                    <label for="">Nombre</label>
+                    <input type="text" name="elementname" id="elementname" value="">
+                </div>
+                <div class="input-group">
+                    <label for="">Numero</label>
+                    <input type="text" name="elementnumber" id="elementnumber" value="">
+                </div>
+                <div class="input-group">
+                    <label for="">Simbolo</label>
+                    <input type="text" name="elementsymbol" id="elementsymbol" value="">
+                </div>
+                <div class="input-group">
+                    <label for="">Peso</label>
+                    <input type="text" name="elementweight" id="elementweight" value="">
+                </div>
+                <div class="button-group">
+
+                    <button type="submit" class="form-submit save-element">Guardar</button>
+                    <button type="submit" class="form-submit delete">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        feather.replace()
+    </script>
+</body>
+</html>

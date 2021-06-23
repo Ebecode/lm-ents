@@ -8,11 +8,17 @@
 html, body {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    /* margin-left: -100vw; */
 }
 
 /* fullscreen container styles */
 .fullscreen-container {
-    
+    flex-shrink: 0;
+    width: 100vw;
     /* margin-top: -1.2rem; */
     background-color: #353b48;
     color: #f5f6fa;
@@ -20,6 +26,18 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+/* pane switching rules  */
+.showcase-screen {
+    margin-left: -100vw;
+}
+.tolist {
+    margin-left: 0;
+}
+.toedit {
+    margin-left: -200vw;
 }
 .panel-icon {
     width: 50px;
@@ -33,6 +51,15 @@ html, body {
     border-radius: 50%;
     transition: all 0.3s ease-out;
 }
+
+/* icon hiding rule */
+.panel-icon.icon-hide {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+
 .panel-icon-right {
     right: 40px;
 }
@@ -288,4 +315,10 @@ html, body {
     grid-row: 4/5;
     grid-column: 2/4;
     font-weight: bold;
+}
+
+/* button hiding rule  */
+.btn-collapsed {
+    visibility: collapse;
+    
 }
