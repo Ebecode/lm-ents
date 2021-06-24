@@ -1,3 +1,6 @@
+// selectors
+
+// paning selectors 
 const showcase = document.querySelector('.showcase-screen');
 const menuIcon = document.querySelector('.show-list');
 const editIcon = document.querySelector('.show-edit');
@@ -11,6 +14,103 @@ const editFields = document.querySelectorAll('.edit-container form input[type="t
 const editDelete = document.querySelector('.form-submit.delete');
 const btnSave = document.querySelector('.save-element');
 
+// paning functions
+
+// reset edit form
+
+function clearEdit () {
+    editFields.forEach(elem => (elem.value = ""))
+}
+function editReset () {
+    editTitle.textContent = "Editar"
+    editDelete.classList.remove('btn-collapsed')
+
+    clearEdit()
+}
+
+// show list pane 
+function showList(event) {
+    showcase.classList.add('tolist')
+    showcase.classList.remove('toedit')
+    closeIcon.classList.remove('icon-hide')
+
+    backIcon.classList.add('icon-hide');
+    editIcon.classList.add('icon-hide');
+    menuIcon.classList.add('icon-hide');
+
+    editDelete.classList.add('btn-collapsed')
+    
+    //editReset()
+
+    event.stopImmediatePropagation()
+}
+
+// show showcase, hide list and edit panes
+function showShowcase(event) {
+    showcase.classList.remove('tolist')
+    showcase.classList.remove('toedit')
+
+    closeIcon.classList.add('icon-hide')
+    backIcon.classList.add('icon-hide')
+
+    menuIcon.classList.remove('icon-hide')
+    editIcon.classList.remove('icon-hide')
+
+    editReset()
+
+    event.stopImmediatePropagation()
+}
+
+// show edit pane 
+function showEdit (event) {
+    editReset()//maybe I should remove this
+
+    showcase.classList.remove('tolist')
+    showcase.classList.add('toedit')
+    backIcon.classList.remove('icon-hide')
+
+    closeIcon.classList.add('icon-hide')
+    menuIcon.classList.add('icon-hide')
+    editIcon.classList.add('icon-hide')
+
+    event.stopImmediatePropagation()
+}
+
+function showAddElement (event) {
+    event.preventDefault()
+
+    //modifies edit pane
+    //editDelete.classList.add('btn-collapsed')
+    editTitle.textContent = "Nuevo elemento"
+
+    clearEdit()
+
+    showcase.classList.remove('tolist')
+    showcase.classList.add('toedit')
+    backIcon.classList.remove('icon-hide')
+
+    closeIcon.classList.add('icon-hide')
+    menuIcon.classList.add('icon-hide')
+    editIcon.classList.add('icon-hide')
+
+    event.stopImmediatePropagation();
+}
+
+
+// paning event listeners 
+
+menuIcon.addEventListener('click', showList)
+
+editIcon.addEventListener('click', showEdit)
+
+closeIcon.addEventListener('click', showShowcase)
+
+backIcon.addEventListener('click', showShowcase)
+
+addElem.addEventListener('click', showAddElement)
+
+
+
 //frontend element object stuff
 const elementsList = [];
 class Element {
@@ -21,70 +121,3 @@ class Element {
         this.weight = weight;
     }
 }
-
- 
-
-
-// paning event listeners 
-menuIcon.addEventListener('click', function(event) {
-    showcase.classList.toggle('tolist');
-    showcase.classList.remove('toedit');
-    menuIcon.classList.toggle('icon-hide');
-    editIcon.classList.toggle('icon-hide');
-    closeIcon.classList.toggle('icon-hide');
-    editDelete.classList.toggle('btn-collapsed');
-});
-
-editIcon.addEventListener('click', function(event) {
-    showcase.classList.toggle('toedit');
-    showcase.classList.remove('tolist');
-    menuIcon.classList.toggle('icon-hide');
-    editIcon.classList.toggle('icon-hide');
-    backIcon.classList.toggle('icon-hide');
-});
-
-closeIcon.addEventListener('click', function(event) {
-    showcase.classList.toggle('tolist');
-    showcase.classList.remove('toedit');
-    menuIcon.classList.toggle('icon-hide');
-    editIcon.classList.toggle('icon-hide');
-    closeIcon.classList.toggle('icon-hide');
-});
-
-backIcon.addEventListener('click', function(event) {
-    showcase.classList.toggle('toedit');
-    showcase.classList.remove('tolist');
-    menuIcon.classList.toggle('icon-hide');
-    editIcon.classList.toggle('icon-hide');
-    backIcon.classList.toggle('icon-hide');
-
-    //clear fields due to cancel
-    editFields.forEach(x=>(x.value = ''));
-
-    //if within add element functionality
-    if (editTitle.textContent == "Nuevo Elemento"){
-        editTitle.textContent = "Editar";
-        editDelete.classList.toggle('btn-collapsed');
-    }
-});
-
-// adding elements option 
-addElem.addEventListener('click', function(event){
-    editTitle.textContent = "Nuevo Elemento";
-    
-    editFields.forEach(x=>(x.value = ''));
-    
-    showcase.classList.toggle('toedit');
-    showcase.classList.remove('tolist');
-    closeIcon.classList.toggle('icon-hide');
-    backIcon.classList.toggle('icon-hide');
-
-    event.preventDefault();
-    event.stopImmediatePropagation();
-});
-
-// submiting data within the add/edit form 
-// btnSave.addEventListener('click', function(event) {
-//     const filled = editFields
-//     const reducer = (accumulator, current) => (accumulator && current);
-// })
