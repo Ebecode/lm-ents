@@ -8,14 +8,31 @@ const closeIcon = document.querySelector('.hide-list');
 const backIcon = document.querySelector('.hide-edit');
 const addElem = document.querySelector('.add-element');
 
+
 // edit form selectors 
 const editTitle = document.querySelector('.edit-container .form-title');
 const editFields = document.querySelectorAll('.edit-container form input[type="text"]');
 const editDelete = document.querySelector('.form-submit.delete');
 const btnSave = document.querySelector('.save-element');
 
-// paning functions
+// element list selectors
+const elementsUl = document.querySelector('.element-list')
 
+// showcase selectors
+
+const showcaseHead = document.querySelector('.input-heading')
+const swipeIcons = document.querySelectorAll('.swipe-icon')
+// element block selectors
+const displayName = document.querySelector(".elem-name")
+const displaySym = document.querySelector(".elem-symbol")
+const displayNum = document.querySelector(".elem-number")
+const displayWeight = document.querySelector(".elem-weight")
+
+
+// other global variables i want 
+let elementForm//chooses which form to display
+
+// paning functions
 // reset edit form
 
 function clearEdit () {
@@ -23,7 +40,10 @@ function clearEdit () {
 }
 function editReset () {
     editTitle.textContent = "Editar"
-    editDelete.classList.remove('btn-collapsed')
+    if (elementsList.length > 0) {
+
+        editDelete.classList.remove('btn-collapsed')
+    }
 
     clearEdit()
 }
@@ -38,7 +58,10 @@ function showList(event) {
     editIcon.classList.add('icon-hide');
     menuIcon.classList.add('icon-hide');
 
-    editDelete.classList.add('btn-collapsed')
+    if (elementsList.length > 0) {
+
+        editDelete.classList.add('btn-collapsed')
+    }
     
     //editReset()
 
@@ -80,9 +103,9 @@ function showAddElement (event) {
     event.preventDefault()
 
     //modifies edit pane
-    //editDelete.classList.add('btn-collapsed')
+    
     editTitle.textContent = "Nuevo elemento"
-
+    
     clearEdit()
 
     showcase.classList.remove('tolist')
@@ -96,12 +119,82 @@ function showAddElement (event) {
     event.stopImmediatePropagation();
 }
 
+// Element creation functions
+// Empty li
+function addEmptyLi () {
+    const newLi = document.createElement("li")
+    const newInput = document.createElement("input")
+    const newLabel = document.createElement("label")
+    const newContent = document.createTextNode("Sin elementos")
+    
+    newLi.className = "element"
+    newInput.type = "radio"
 
+    newLabel.appendChild(newContent)
+    
+    newLi.appendChild(newInput)
+    newLi.appendChild(newLabel)
+
+
+    elementsUl.appendChild(newLi)
+}
+
+//populate element block
+function populateBlock (obj) {
+    displayName.textContent = obj.name
+    displaySym.textContent = obj.sym
+    displayWeight.textContent = obj.weight
+    displayNum.textContent = obj.num
+}
+//populate showcase heading
+function populateShowHead (obj) {
+    showcaseHead.value = obj.name
+}
+// show / hide swipe buttons
+function hideSwipe () {
+    swipeIcons.forEach(x => x.classList.add('btn-collapsed'))
+}
+function showSwipe () {
+    swipeIcons.forEach(x => x.classList.remove('btn.collapsed'))
+}
+
+
+// When page loads
+
+//frontend element object stuff
+
+class Element {
+    constructor(name, sym, num, weight) {
+        this.name = name;
+        this.sym = sym;
+        this.num = num;
+        this.weight = weight;
+    }
+}
+
+//create dummy element
+const dummy = new Element("Elemento", "?", "0", "0.00")
+const elementsList = []
+let displayElement = dummy
+
+if (elementsList.length < 1){
+    populateBlock(dummy)
+    populateShowHead(dummy)
+    hideSwipe()
+    addEmptyLi()
+    editDelete.classList.add('btn-collapsed')//to smooth things out for elementForm load
+    elementForm = showAddElement
+}
+
+
+
+// Event listeners
 // paning event listeners 
 
 menuIcon.addEventListener('click', showList)
 
-editIcon.addEventListener('click', showEdit)
+// editIcon.addEventListener('click', showEdit) //gonna try conditional if elem list empty
+editIcon.addEventListener('click', elementForm)
 
 closeIcon.addEventListener('click', showShowcase)
 
@@ -111,13 +204,3 @@ addElem.addEventListener('click', showAddElement)
 
 
 
-//frontend element object stuff
-const elementsList = [];
-class Element {
-    constructor(name, sym, num, weight) {
-        this.name = name;
-        this.sym = sym;
-        this.num = num;
-        this.weight = weight;
-    }
-}
