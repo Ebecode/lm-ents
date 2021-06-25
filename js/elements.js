@@ -89,6 +89,10 @@ function showShowcase(event) {
     menuIcon.classList.remove('icon-hide')
     editIcon.classList.remove('icon-hide')
 
+    if (elementsList.length > 0){
+        elementForm = showEdit
+    }
+
     editReset()
     event.preventDefault()//used temprarily for adding, modifying an dsaving button's sake
     event.stopImmediatePropagation()
@@ -194,10 +198,9 @@ function showSwipe () {
 function updateElems (arr) {
     // clear the ul list 
     if (elementsUl.hasChildNodes) {
-        const children = elementsUl.children
-        children.forEach(y => {
-            elementsUl.removeChild(y)
-        })
+        while (elementsUl.firstChild){
+            elementsUl.removeChild(elementsUl.firstChild)
+        }
     }
     arr.forEach(x => {
         addElementLi(x)
@@ -269,9 +272,11 @@ btnSave.addEventListener('click', function(event) {
     }
     // if in edit mode 
     // update the elements ul
-
+    updateElems(elementsList)
     // call showshowcase 
     showShowcase(event)
+
+    elementForm = showEdit
     event.preventDefault()
     event.stopImmediatePropagation()
 
